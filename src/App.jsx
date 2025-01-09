@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Routes, Route, Link, Navigate, useMatch } from "react-router-dom";
+import Alert from "react-bootstrap/Alert";
 import Home from "./components/Home";
 import Note from "./components/Note";
 import Notes from "./components/Notes";
@@ -30,9 +31,14 @@ const App = () => {
 	]);
 
 	const [user, setUser] = useState(null);
+	const [message, setMessage] = useState(null);
 
 	const login = (user) => {
 		setUser(user);
+		setMessage(`welcome ${user}`);
+		setTimeout(() => {
+			setMessage(null);
+		}, 3000);
 	};
 
 	const padding = {
@@ -46,6 +52,7 @@ const App = () => {
 
 	return (
 		<div className="container">
+			{message && <Alert variant="success">{message}</Alert>}
 			<div>
 				<Link
 					style={padding}
