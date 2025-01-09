@@ -45,7 +45,7 @@ const App = () => {
 		: null;
 
 	return (
-		<div>
+		<div className="container">
 			<div>
 				<Link
 					style={padding}
