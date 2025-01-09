@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Routes, Route, Link, Navigate, useMatch } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import Alert from "react-bootstrap/Alert";
 import Home from "./components/Home";
 import Note from "./components/Note";
@@ -53,36 +56,69 @@ const App = () => {
 	return (
 		<div className="container">
 			{message && <Alert variant="success">{message}</Alert>}
-			<div>
-				<Link
-					style={padding}
-					to="/"
-				>
-					home
-				</Link>
-				<Link
-					style={padding}
-					to="/notes"
-				>
-					notes
-				</Link>
-				<Link
-					style={padding}
-					to="/users"
-				>
-					users
-				</Link>
-				{user ? (
-					<em>{user} logged in</em>
-				) : (
-					<Link
-						style={padding}
-						to="/login"
-					>
-						login
-					</Link>
-				)}
-			</div>
+			<Navbar
+				collapseOnSelect
+				expand="lg"
+				bg="dark"
+				variant="dark"
+			>
+				<Container>
+					<Navbar.Brand href="#">TKTL</Navbar.Brand>
+					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+					<Navbar.Collapse id="responsive-navbar-nav">
+						<Nav className="me-auto">
+							<Nav.Link
+								href="#"
+								as="span"
+							>
+								<Link
+									style={padding}
+									to="/"
+								>
+									home
+								</Link>
+							</Nav.Link>
+							<Nav.Link
+								href="#"
+								as="span"
+							>
+								<Link
+									style={padding}
+									to="/notes"
+								>
+									notes
+								</Link>
+							</Nav.Link>
+							<Nav.Link
+								href="#"
+								as="span"
+							>
+								<Link
+									style={padding}
+									to="/users"
+								>
+									users
+								</Link>
+							</Nav.Link>
+							<Nav.Link
+								href="#"
+								as="span"
+							>
+								{user ? (
+									<em style={padding}>{user} logged in</em>
+								) : (
+									<Link
+										style={padding}
+										to="/login"
+									>
+										login
+									</Link>
+								)}
+							</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
 
 			<Routes>
 				<Route
